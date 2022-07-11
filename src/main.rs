@@ -4,26 +4,26 @@ use std::thread;
 fn main() {
     // Once you've set up the Shop and Card structs, you should be able to
     // uncomment this code
-    //
-    // let comic_book_shoppe = Shop {
-    //     cards: [
-    //         Card {
-    //             price: 10,
-    //             health: 10,
-    //             damage: 10,
-    //         },
-    //         Card {
-    //             price: 20,
-    //             health: 20,
-    //             damage: 20,
-    //         },
-    //         Card {
-    //             price: 30,
-    //             health: 30,
-    //             damage: 30,
-    //         },
-    //     ],
-    // };
+
+    let comic_book_shoppe = Shop {
+        cards: [
+            Card {
+                price: 10,
+                health: 10,
+                damage: 10,
+            },
+            Card {
+                price: 20,
+                health: 20,
+                damage: 20,
+            },
+            Card {
+                price: 30,
+                health: 30,
+                damage: 30,
+            },
+        ],
+    };
 
     println!("Welcome to The Comic Book Shoppe!");
     println!("We've got three cards for you to check out.");
@@ -69,28 +69,51 @@ fn main() {
 /// A Shop is a collection of 3 cards.
 struct Shop {
     // TOOD: Add the field to this struct
+    cards: [Card; 3],
 }
 
 impl Shop {
     /// Get the price of the most expensive card in the shop
     fn most_expensive(&self) -> u32 {
-        todo!()
+        let mut i = 0;
+        let mut mPrice: u32 = 0;
+        while i < 3 {
+            if self.cards[i].price > mPrice {
+                mPrice = self.cards[i].price;
+            }
+            i += 1;
+        }
+        return mPrice;
     }
 
     /// Get the total damage of all cards in the shop
     fn total_damage(&self) -> u32 {
-        todo!()
+        let mut powerrrrr: u32 = 0;
+        let mut i = 0;
+        while i < 3 {
+            powerrrrr += self.cards[i].damage;
+            i += 1; // why cant i just ++  ?????????? fuuu
+        }
+        return powerrrrr;
     }
 
     /// Get the total health of all cards in the shop
     fn total_health(&self) -> u32 {
-        todo!()
+        let mut healthyBoy: u32 = 0;
+        let mut i = 0;
+        while i < 3 {
+            healthyBoy += self.cards[i].health;
+            i += 1;
+        }
+        return healthyBoy;
     }
 }
 
 /// A Card is a card stores a price, health, and damage.
 struct Card {
-    // TODO: Add fields to this struct
+    price: u32,
+    damage: u32,
+    health: u32,
 }
 
 #[cfg(test)]
